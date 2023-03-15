@@ -1,0 +1,34 @@
+<!-- zoberie tamplate ktory som vytvoril a bachne to na tuto stranku -->
+<% layout('/layouts/boilerplate') %>
+<div id="cluster-map"></div>
+<h1>All places</h1>
+<div>
+  <a href="/places/new">Add new place</a>
+</div>
+
+<% for(let place of places) { %>
+<div class="card mb-3">
+  <div class="row">
+    <div class="col-md-4">
+      <img class="img-fluid" alt="" src="<%=place.images[0].url%>" />
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title"><%=place.title%></h5>
+        <p class="card-text"><%=place.description%></p>
+        <p class="card-text">
+          <small class="text-muted"><%=place.location%></small>
+        </p>
+        <a href="/places/<%=place._id%>" class="btn btn-primary">View <%=place.title%></a>
+      </div>
+    </div>
+  </div>
+</div>
+<% } %>
+
+<script>
+  const mapToken = '<%- process.env.MAPBOX_TOKEN %>';
+  const places = {features: <%- JSON.stringify(places) %>}
+</script>
+
+<script src="/javascripts/clusterMap.js"></script>

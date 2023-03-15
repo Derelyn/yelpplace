@@ -1,0 +1,41 @@
+<% layout('/layouts/boilerplate') %>
+<div class="row">
+  <h1 class="text-center">New Place</h1>
+  <div class="col-md-6 offset-md-3">
+    <!-- novalidate sem dam aby som programu povedal, ze nech to nerobi on ale nieco ine, naprj bootstrap -->
+    <form action="/places" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
+      <div class="mb-3">
+        <label class="form-label" for="title">Title</label>
+        <input class="form-control" type="text" name="title" id="title" placeholder="living near nature" required />
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="location">Location of a place</label>
+        <input class="form-control" type="text" name="location" id="location" placeholder="Poprad" required />
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+      <div class="mb-3">
+        <label for="image" class="form-label">Add Image</label>
+        <input class="form-control" type="file" id="image" name="image" multiple />
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="price">Add price</label>
+        <div class="input-group">
+          <span class="input-group-text" id="price-label">€</span>
+          <input type="text" class="form-control" id="price" aria-label="price" placeholder="0.00" aria-describedby="price-label" name="price" required />
+          <span class="input-group-text"></span>
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="description">Description of the place</label>
+        <textarea class="form-control" type="text" name="description" id="description" placeholder="Poprad" required></textarea>
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+      <div class="mb-3">
+        <button class="btn btn-success">Post a new place</button>
+      </div>
+    </form>
+    <a href="/places">All Places</a>
+  </div>
+</div>
